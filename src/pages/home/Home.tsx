@@ -1,3 +1,5 @@
+import ListaProdutos from "../../components/produtos/listaprodutos/ListaProdutos"
+import ModalProduto from "../../components/produtos/modalproduto/ModalProduto"
 
 
 function Home() {
@@ -12,6 +14,11 @@ function Home() {
                         <p className='text-xl'>
                             O melhor Preço de Itaquaquecetuba
                         </p>
+                        <div className="flex justify-around gap-4">
+                            <div className="flex justify-around gap-4">
+                                <ModalProduto />
+                            </div>
+                        </div>
                     </div>
 
                     <div className="flex justify-center ">
@@ -23,7 +30,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-     
+            <ListaProdutos />
         </>
     )
 }
