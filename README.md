@@ -4,11 +4,21 @@ O **Farmácia** é uma aplicação web desenvolvida com **React e Tailwind CSS**
 
 ## 📌 Funcionalidades
 
+### 🏷️ Categorias
 - **📋 Listagem de Categorias**: Exibe todas as categorias de produtos  
 - **➕ Cadastro de Categorias**: Permite adicionar novas categorias  
 - **🗑️ Exclusão de Categorias**: Remove categorias do sistema  
-- **📦 Gerenciamento de Produtos**: Adição, remoção e edição de produtos  
+
+### 📦 Produtos
+- **📋 Listagem de Produtos**: Exibe todos os produtos disponíveis  
+- **➕ Cadastro de Produtos**: Permite adicionar novos produtos  
+- **🗑️ Exclusão de Produtos**: Remove produtos do sistema  
+- **📑 Modal de Informações**: Exibe detalhes do produto  
+
+### ⚡ Outras Funcionalidades
 - **🔗 Integração com o Backend** via API  
+- **🌍 Design Responsivo**  
+- **🖌️ Estilização moderna com Tailwind**  
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -17,5 +27,3 @@ O **Farmácia** é uma aplicação web desenvolvida com **React e Tailwind CSS**
 - **React Router DOM** (Navegação entre páginas)  
 - **Axios** (Requisições HTTP)  
 - **Phosphor Icons** (Ícones)  
-
-
