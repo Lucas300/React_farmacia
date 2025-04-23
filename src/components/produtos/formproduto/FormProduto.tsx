@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, ChangeEvent } from "react";
+import { useState,  useEffect, ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { buscar, atualizar, cadastrar } from "../../../services/Service";
@@ -11,7 +11,7 @@ function FormProduto() {
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [produtos, setProdutos] = useState<Produto[]>([])
+
 
     const [categorias, setCategorias] = useState<Categoria[]>([])
     const [categoria, setCategoria] = useState<Categoria>({ id: 0, nome: '', descricao: '', })
@@ -27,13 +27,7 @@ function FormProduto() {
         }
     }
 
-    async function buscarCategoriaPorId(id: string) {
-        try {
-            await buscar(`/categorias/${id}`, setCategoria)
-        } catch (error: any) {
-            alert('Erro ao buscar o Categoria')
-        }
-    }
+    
 
     async function buscarCategorias() {
         try {
@@ -102,8 +96,7 @@ function FormProduto() {
         retornar()
     }
 
-    const carregandoCategoria = categoria.descricao === '';
-
+    
     return (
         <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovoProduto}>
             <div className="flex flex-col gap-2">

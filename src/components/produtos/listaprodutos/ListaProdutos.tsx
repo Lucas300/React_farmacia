@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+
 
 import { useState, useEffect } from "react";
 
@@ -10,7 +10,7 @@ import CardProduto from "../cardproduto/CardProduto";
 
 function ListaProdutos() {
 
-    const navigate = useNavigate();
+
 
     const [produtos, setProdutos] = useState<Produto[]>([]);
 
