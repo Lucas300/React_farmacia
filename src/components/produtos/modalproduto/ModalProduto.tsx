@@ -14,6 +14,15 @@ function ModalProduto() {
                     </button>
                 }
                 modal
+                overlayStyle={{ background: 'rgba(0, 0, 0, 0.5)' }} // Fundo transparente
+                contentStyle={{
+                    borderRadius: '10px', // Bordas arredondadas
+                    padding: '0', // Remove padding interno
+                    width: '90%', // Ajusta a largura do popup
+                    maxWidth: '600px', // Define um tamanho máximo
+                    height: '89vh', // Define uma altura máxima
+                    overflowY: 'auto', // Adiciona scroll vertical
+                }}
             >
                 <FormProduto />
             </Popup>

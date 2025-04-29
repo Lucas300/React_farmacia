@@ -1,35 +1,40 @@
-import { Link } from 'react-router-dom'
-import Categoria from '../../../model/Categorias'
-
+import { Link } from 'react-router-dom';
+import Categoria from '../../../model/Categorias';
 
 interface CardCategiasProps {
-    categoria: Categoria
+  categoria: Categoria;
 }
 
 function CardCategorias({ categoria }: CardCategiasProps) {
-    return (
-        <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-            <header className='py-2 px-6 bg-red-800 text-white font-bold text-2xl'>
-                Categoria
-            </header>
-            <p className='p-8 text-3xl bg-slate-200 h-full'>{categoria.nome}</p>
-            <p className='p-8 text-3xl bg-slate-200 h-full'>{categoria.descricao}</p>
-            <div className="flex">
-                <Link to={`/editarcategoria/${categoria.id}`}
-                    className='w-full text-black bg-	indigo-400 hover:bg-indigo-500 
-    flex items-center justify-center py-2'>
-                    <button>Editar</button>
-                </Link>
+  return (
+    <div className="flex items-center justify-center mt-5 max-h-screen bg-gray-100">
+      <div className="flex flex-col w-full h-full md:w-auto md:h-auto md:max-w-2xl gap-6 bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-2xl font-bold text-center text-indigo-600">
+          Categoria {categoria.id}
+        </h2>
 
-                <Link to={`/deletarcategoria/${categoria.id}`}
-                    className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
-		flex items-center justify-center'>
-                    <button>Deletar</button>
-                </Link>
-            </div>
-
+        <div className="border rounded-lg p-4 bg-gray-100">
+          <p className="text-lg font-bold text-gray-700">{categoria.nome}</p>
+          <p className="text-gray-600">{categoria.descricao}</p>
         </div>
-    )
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Link
+            to={`/editarcategoria/${categoria.id}`}
+            className="rounded-lg bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 flex justify-center items-center"
+          >
+            Editar
+          </Link>
+          <Link
+            to={`/deletarcategoria/${categoria.id}`}
+            className="rounded-lg bg-red-500 hover:bg-red-700 text-white font-bold py-3 flex justify-center items-center"
+          >
+            Deletar
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default CardCategorias
+export default CardCategorias;

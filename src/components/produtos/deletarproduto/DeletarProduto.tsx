@@ -1,95 +1,99 @@
-import { useState,  useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { buscar, deletar } from "../../../services/Service"
-import { RotatingLines } from "react-loader-spinner"
-import Produto from "../../../model/Produto"
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { buscar, deletar } from "../../../services/Service";
+import { RotatingLines } from "react-loader-spinner";
+import Produto from "../../../model/Produto";
 
 function DeletarProduto() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [produto, setProduto] = useState<Produto>({} as Produto);
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [produto, setProduto] = useState<Produto>({} as Produto)
+  const { id } = useParams<{ id: string }>();
 
-    const { id } = useParams<{ id: string }>()
+  async function buscarPorId(id: string) {
+    try {
+      await buscar(`/produtos/${id}`, setProduto);
+    } catch (error: any) {
+      console.error("Erro ao buscar produto:", error);
+    }
+  }
 
-    async function buscarPorId(id: string) {
-        try {
-            await buscar(`/produtos/${id}`, setProduto)
-        } catch (error: any) {
-           
-        }
+  useEffect(() => {
+    if (id !== undefined) {
+      buscarPorId(id);
+    }
+  }, [id]);
+
+  async function deletarProduto() {
+    setIsLoading(true);
+
+    try {
+      await deletar(`/produtos/${id}`);
+      alert("Produto apagado com sucesso");
+      retornar();
+    } catch (error: any) {
+      alert("Erro ao deletar o produto.");
     }
 
-    useEffect(() => {
-        if (id !== undefined) {
-            buscarPorId(id)
-        }
-    }, [id])
+    setIsLoading(false);
+  }
 
-    async function deletarProduto() {
-        setIsLoading(true)
+  function retornar() {
+    navigate("/produtos");
+  }
 
-        try {
-            await deletar(`/produtos/${id}`)
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form
+        className="flex flex-col w-full h-full md:w-auto md:h-auto md:max-w-2xl gap-6 bg-white shadow-md rounded-lg p-6 sm:mt-[-20px]"
+        onSubmit={(e) => {
+          e.preventDefault();
+          deletarProduto();
+        }}
+      >
+        <h2 className="text-2xl font-bold text-center text-indigo-600">
+          Deletar Produto
+        </h2>
 
-            alert('Produto apagado com sucesso')
+        <p className="text-center font-semibold">
+          Você tem certeza de que deseja apagar o produto abaixo?
+        </p>
 
-        } catch (error: any) {
-                alert('Erro ao deletar a produto.')       
-        }
-
-        setIsLoading(false)
-        retornar()
-    }
-
-    function retornar() {
-        navigate("/produtos")
-    }
-    
-    return (
-        <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center my-4'>Deletar Produto</h1>
-
-            <p className='text-center font-semibold mb-4'>
-                Você tem certeza de que deseja apagar o produto a seguir?
-            </p>
-
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header 
-                    className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>
-                    Produto
-                </header>
-                <div className="p-4">
-                    <p className='text-xl h-full'>{produto.nome}</p>
-                    <p>{produto.descricao}</p>
-                </div>
-                <div className="flex">
-                    <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
-                        onClick={retornar}>
-                        Não
-                    </button>
-                    <button 
-                        className='w-full text-slate-100 bg-indigo-400 
-                        hover:bg-indigo-600 flex items-center justify-center'
-                        onClick={deletarProduto}>
-                        
-                        {isLoading ?
-                            <RotatingLines
-                                strokeColor="white"
-                                strokeWidth="5"
-                                animationDuration="0.75"
-                                width="24"
-                                visible={true}
-                            /> :
-                            <span>Sim</span>
-                        }
-                    </button>
-                </div>
-            </div>
+        <div className="border rounded-lg p-4 bg-gray-100">
+          <p className="text-lg font-bold text-gray-700">{produto.nome}</p>
+          <p className="text-gray-600">{produto.descricao}</p>
         </div>
-    )
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <button
+            type="button"
+            className="rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-3"
+            onClick={retornar}
+          >
+            Não
+          </button>
+          <button
+            type="submit"
+            className="rounded-lg bg-red-500 hover:bg-red-700 text-white font-bold py-3 flex justify-center items-center"
+          >
+            {isLoading ? (
+              <RotatingLines
+                strokeColor="white"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="24"
+                visible={true}
+              />
+            ) : (
+              <span>Sim</span>
+            )}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
-export default DeletarProduto
+export default DeletarProduto;

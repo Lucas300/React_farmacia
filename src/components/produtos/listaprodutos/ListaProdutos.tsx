@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 
 
@@ -42,17 +40,17 @@ function ListaProdutos() {
                     wrapperClass="dna-wrapper mx-auto"
                 />
             )}
-            <div className="flex justify-center w-full my-4">
-                <div className="container flex flex-col mx-2">
-                    <div className='container mx-auto my-4 
-                        grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
-                    >
-                        {produtos.map((produto) => (
-                            <CardProduto key={produto.id} produto={produto} />
-                        ))}
-                    </div>
-                </div>
-            </div>
+            <div className="flex justify-center items-center w-full my-4 min-h-screen">
+  <div className="container flex flex-col mx-2 sm:ml-12">
+    <div className="container mx-auto my-4 
+      grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+    >
+      {produtos.map((produto) => (
+        <CardProduto key={produto.id} produto={produto} />
+      ))}
+    </div>
+  </div>
+</div>
         </>
     );
 }

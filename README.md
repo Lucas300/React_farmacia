@@ -2,6 +2,8 @@
 
 O **Farmácia** é uma aplicação web desenvolvida com **React e Tailwind CSS**, focada na gestão de produtos e categorias de uma farmácia. O projeto fornece uma interface moderna e responsiva para facilitar a administração dos dados.
 
+Link do Projeto: https://react-farmacia-blond.vercel.app/
+
 ## 📌 Funcionalidades
 
 ### 🏷️ Categorias
