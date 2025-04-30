@@ -95,9 +95,9 @@ function FormProduto() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-transparent">
       <form
-        className="flex flex-col w-full h-full md:w-auto md:h-auto md:max-w-2xl gap-6 bg-white shadow-md rounded-lg p-6"
+        className="flex flex-col w-full h-auto md:w-auto md:h-auto md:max-w-2xl gap-6 bg-white/90 shadow-md rounded-lg p-6"
         onSubmit={gerarNovoProduto}
       >
         <h2 className="text-2xl font-bold text-center text-indigo-600">

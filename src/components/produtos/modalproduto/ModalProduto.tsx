@@ -14,14 +14,21 @@ function ModalProduto() {
                     </button>
                 }
                 modal
-                overlayStyle={{ background: 'rgba(0, 0, 0, 0.5)' }} // Fundo transparente
+                overlayStyle={{
+                    background: 'rgba(0, 0, 0, 0.5)', // Fundo semitransparente
+                    display: 'flex', // Centraliza o modal
+                    alignItems: 'center', // Centraliza verticalmente
+                    justifyContent: 'center', // Centraliza horizontalmente
+                }}
                 contentStyle={{
+                    border: 'none', // Remove qualquer borda externa
                     borderRadius: '10px', // Bordas arredondadas
                     padding: '0', // Remove padding interno
-                    width: '90%', // Ajusta a largura do popup
+                    width: '100%', // Ajusta a largura ao conteúdo
                     maxWidth: '600px', // Define um tamanho máximo
-                    height: '89vh', // Define uma altura máxima
-                    overflowY: 'auto', // Adiciona scroll vertical
+                    height: 'auto', // Ajusta a altura ao conteúdo
+                    overflow: 'hidden', // Remove scroll desnecessário
+                    background: 'transparent', // Fundo transparente
                 }}
             >
                 <FormProduto />
