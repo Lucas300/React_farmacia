@@ -24,10 +24,10 @@ function ModalProduto() {
                     border: 'none', // Remove qualquer borda externa
                     borderRadius: '10px', // Bordas arredondadas
                     padding: '0', // Remove padding interno
-                    width: '100%', // Ajusta a largura ao conteúdo
-                    maxWidth: '600px', // Define um tamanho máximo
-                    height: 'auto', // Ajusta a altura ao conteúdo
-                    overflow: 'hidden', // Remove scroll desnecessário
+                    width: '90%', // Ajusta a largura para telas pequenas
+                    maxWidth: '540px', // Define um tamanho máximo para telas maiores
+                    height: '100%', // Define uma altura máxima para o modal
+                    overflowY: 'auto', // Adiciona scroll vertical
                     background: 'transparent', // Fundo transparente
                 }}
             >

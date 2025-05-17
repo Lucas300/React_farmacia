@@ -63,7 +63,6 @@ function DeletarProduto() {
 
         <div className="border rounded-lg p-4 bg-gray-100">
           <p className="text-lg font-bold text-gray-700">{produto.nome}</p>
-          <p className="text-gray-600">{produto.descricao}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

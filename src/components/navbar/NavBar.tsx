@@ -35,15 +35,16 @@ function Navbar() {
               isOpen ? "hidden" : ""
             }`}
           >
+            <Link to="/" className="hover:underline">
+              Produtos
+            </Link>
             <Link to="/categorias" className="hover:underline">
               Categorias
             </Link>
             <Link to="/cadastrarcategoria" className="hover:underline">
               Cadastrar Categoria
             </Link>
-            <Link to="/" className="hover:underline">
-              Produtos
-            </Link>
+           
           </div>
         </div>
 

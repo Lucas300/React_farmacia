@@ -41,7 +41,7 @@ function ListaProdutos() {
                 />
             )}
             <div className="flex justify-center items-center w-full my-4 min-h-screen">
-  <div className="container flex flex-col mx-2 sm:ml-12">
+  <div className="container flex flex-col mx-2">
     <div className="container mx-auto my-4 
       grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
     >
