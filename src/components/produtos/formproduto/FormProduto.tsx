@@ -1,6 +1,5 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
 import { buscar, atualizar, cadastrar } from "../../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
 import Produto from "../../../model/Produto";
@@ -38,7 +37,6 @@ function FormProduto() {
 
   useEffect(() => {
     buscarCategorias();
-
     if (id !== undefined) {
       buscarProdutoPorId(id);
     }
@@ -49,6 +47,7 @@ function FormProduto() {
       ...produto,
       categoria: categoria,
     });
+    // eslint-disable-next-line
   }, [categoria]);
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -76,7 +75,6 @@ function FormProduto() {
     if (id !== undefined) {
       try {
         await atualizar(`/produtos`, produto, setProduto);
-
         alert("Produto atualizado com sucesso");
       } catch (error: any) {
         alert("Erro ao atualizar o Produto");
@@ -95,63 +93,36 @@ function FormProduto() {
   }
 
   return (
-    <div className="flex mt-16 items-center justify-center min-h-screen bg-transparent">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-100 via-white to-indigo-200 px-2">
       <form
-        className="flex flex-col w-full h-auto md:w-auto md:h-auto md:max-w-2xl gap-6 bg-white/90 shadow-md rounded-lg p-6"
+        className="mt-2 mb-2 w-full max-w-2xl bg-transparent shadow-2xl rounded-2xl p-8 md:p-12 flex flex-col gap-6"
         onSubmit={gerarNovoProduto}
       >
-        <h2 className="text-2xl font-bold text-center text-indigo-600">
-          {id !== undefined ? "Atualizar Produto" : "Cadastrar Produto"}
+        <h2 className="text-3xl font-extrabold text-center text-indigo-700 mb-2 tracking-tight">
+          {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
         </h2>
+        <p className="text-center text-gray-500 mb-4">
+          Preencha todos os campos para{" "}
+          {id !== undefined ? "editar" : "cadastrar"} um produto.
+        </p>
 
-        <div className="flex flex-col gap-4">
-          <label htmlFor="nome" className="font-medium text-gray-700">
-            Nome do Produto
-          </label>
-          <input
-            type="text"
-            placeholder="Nome do Produto"
-            name="nome"
-            required
-            className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            value={produto.nome}
-            onChange={atualizarEstado}
-          />
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <label htmlFor="descricao" className="font-medium text-gray-700">
-            Descrição do Produto
-          </label>
-          <input
-            type="text"
-            placeholder="Descrição"
-            name="descricao"
-            required
-            className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            value={produto.descricao}
-            onChange={atualizarEstado}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-4">
-            <label htmlFor="quantidade" className="font-medium text-gray-700">
-              Quantidade
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="nome" className="font-semibold text-gray-700">
+              Nome do Produto
             </label>
             <input
-              type="number"
-              placeholder="Quantidade"
-              name="quantidade"
+              type="text"
+              placeholder="Nome do Produto"
+              name="nome"
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              value={produto.quantidade}
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+              value={produto.nome}
               onChange={atualizarEstado}
             />
           </div>
-
-          <div className="flex flex-col gap-4">
-            <label htmlFor="laboratorio" className="font-medium text-gray-700">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="laboratorio" className="font-semibold text-gray-700">
               Laboratório
             </label>
             <input
@@ -159,16 +130,45 @@ function FormProduto() {
               placeholder="Laboratório"
               name="laboratorio"
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
               value={produto.laboratorio}
               onChange={atualizarEstado}
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-4">
-            <label htmlFor="preco" className="font-medium text-gray-700">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="descricao" className="font-semibold text-gray-700">
+            Descrição do Produto
+          </label>
+          <input
+            type="text"
+            placeholder="Descrição"
+            name="descricao"
+            required
+            className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+            value={produto.descricao}
+            onChange={atualizarEstado}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="quantidade" className="font-semibold text-gray-700">
+              Quantidade
+            </label>
+            <input
+              type="number"
+              placeholder="Quantidade"
+              name="quantidade"
+              required
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+              value={produto.quantidade}
+              onChange={atualizarEstado}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="preco" className="font-semibold text-gray-700">
               Preço
             </label>
             <input
@@ -176,35 +176,36 @@ function FormProduto() {
               placeholder="Preço"
               name="preco"
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
               value={produto.preco}
-              onChange={atualizarEstado}
-            />
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <label htmlFor="foto" className="font-medium text-gray-700">
-              Foto (URL)
-            </label>
-            <input
-              type="text"
-              placeholder="URL da Foto"
-              name="foto"
-              required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              value={produto.foto}
               onChange={atualizarEstado}
             />
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <label className="font-medium text-gray-700">Categoria do Produto</label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="foto" className="font-semibold text-gray-700">
+            Foto (URL)
+          </label>
+          <input
+            type="text"
+            placeholder="URL da Foto"
+            name="foto"
+            required
+            className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+            value={produto.foto}
+            onChange={atualizarEstado}
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold text-gray-700">Categoria do Produto</label>
           <select
             name="categoria"
-            className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
             onChange={atualizarCategoria}
             value={produto.categoria?.id || ""}
+            required
           >
             <option value="" disabled>
               Selecione uma Categoria
@@ -219,7 +220,7 @@ function FormProduto() {
 
         <button
           type="submit"
-          className="rounded-lg bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 flex justify-center items-center disabled:bg-gray-300"
+          className="rounded-lg bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-3 flex justify-center items-center transition disabled:bg-gray-300"
           disabled={isLoading || produto.categoria?.id === 0}
         >
           {isLoading ? (

@@ -10,7 +10,7 @@ function CardCategorias({ categoria }: CardCategiasProps) {
     <div className="flex bg-transparent items-center justify-center mt-5 max-h-screen bg-gray-100">
       <div className="flex flex-col w-full h-full md:w-auto md:h-auto md:max-w-2xl gap-6 bg-white shadow-md rounded-lg p-6">
         <h2 className="text-2xl font-bold text-center text-indigo-600">
-          Categoria {categoria.id}
+          Categoria 
         </h2>
 
         <div className="border rounded-lg p-4 bg-gray-100">
