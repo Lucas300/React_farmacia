@@ -9,11 +9,14 @@ import DeletarCategoria from './components/categorias/deletarcategoria/DeletarCa
 import ListaProdutos from './components/produtos/listaprodutos/ListaProdutos'
 import FormProduto from './components/produtos/formproduto/FormProduto'
 import DeletarProduto from './components/produtos/deletarproduto/DeletarProduto'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
     <>
         <BrowserRouter>
+        <ToastContainer />
           <Navbar />
           <div className="min-h-[80vh]">
             <Routes>
