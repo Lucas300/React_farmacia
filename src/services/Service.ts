@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://backend-farmacia-4cjd.onrender.com"
-    // https://backend-farmacia-idlk.onrender.com
+    baseURL: "https://backend-farmacia-n70f.onrender.com"
   })
 
 
