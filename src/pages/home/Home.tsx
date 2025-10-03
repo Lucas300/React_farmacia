@@ -1,5 +1,6 @@
 import ListaProdutos from "../../components/produtos/listaprodutos/ListaProdutos";
 import ModalProduto from "../../components/produtos/modalproduto/ModalProduto";
+import fotosobre from "../../assets/images/fm1.png"
 
 function Home() {
   return (
@@ -19,7 +20,7 @@ function Home() {
           {/* Imagem - Oculta em telas médias e pequenas */}
           <div className="hidden md:flex justify-center">
             <img
-              src="https://images.weare365.io/filters:format(.webp)/1920x0/BR_Drogaria_Sao_Paulo_fc4122f334.png"
+              src={fotosobre}
               alt="Imagem Página Home"
               className="w-2/3"
             />

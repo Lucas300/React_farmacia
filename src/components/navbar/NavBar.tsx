@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import fotosobre from "../../assets/images/fm1.png"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="https://images.weare365.io/filters:format(.webp)/1920x0/BR_Drogaria_Sao_Paulo_fc4122f334.png"
+              src={fotosobre}
               alt="Imagem Página Home"
               className="w-28"
             />
